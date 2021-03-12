@@ -72,7 +72,7 @@
     </nav>
 
     <!-- 3.1. ocult:  finestra Modal REGISTRE (va fora etiq.header pq alla tenim un fixed-top) -->
-    <modal class="modal fade" id="miModal">
+    <modal class="modal fade" id="miModal" onload="focusPrimerCamp()">
         <div class="modal-dialog">
             <div class="modal-content">
                 <modalhead class="modal-header">
@@ -82,27 +82,36 @@
                 <modalbody class="modal-body">
                     <p>Omple les teves dades:</p>                  
 
-                    <!-- etiqueta html FORM, i classe 'needs-validation' de Bootstrap, 
-                         mètode enviament GET (paràmetres visibles en URL), mètode POST envia ocult -->
-                    <form class="needs-validation pb-5" method="POST" action="https://google.com" id="myForm"
-                    onsubmit="return myValidation()" name="myForm">
+                    <!-- etiqueta html FORM i classe 'needs-validation' de Bootstrap amb metodes fets.
+                        mètode envio POST envia dades ocultes (l'altre és GET, dades visibles en URL).
+                        id='frmReg' important perque el JS trobi Form Register, i camps per a validar.
+                        on submit='return Validate()' executarà la funció principal dins del JS.   -->
+                    <form class    = "needs-validation pb-5" 
+                          method   = "POST" 
+                          action   = "https://google.com" 
+                          id       = "frmReg"                           
+                          name     = "frmReg"
+                          onload   = "focusPrimerCamp()"
+                          onsubmit = "return Validate()"
+                          >
 
-                    <div class="row">           
+                    <fieldset class="row">           
                         <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="divUser">
                             <!-- _____ USER NAME ____  -->
                             <div class="form-group">
-                                <label for="inpUser">Usuari</label>
-                                <input id="inpUser" type="text" class="form-control" placeholder="usuari">
+                                <label for="inpUser">Usuari (nick name)</label>
+                                <!-- important posar un ID o NAME, pq el JS trobi el camp a validar  -->
+                                <input id="inpUser" type="text" class="form-control" placeholder="usuari" autofocus>
                                 <!-- clases 'invalid-feedback' i 'valid-feedback' de Bootstrap 
                                      en aquesta ubicació posarà missatge Ok o Nok  -->
-                                <error id="errUser" class="invalid-feedback"></error>
-                                <valid id="valUser" class="valid-feedback"></valid>
+                                <div id="errUser" class="invalid-feedback"></div>
+                                <div id="valUser" class="valid-feedback"></div>
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols 
                              osigui xs agafa 12, sm també (per defecte) a partir md agafa 6 cols -->
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="divPwd1">
                             <!-- _____ PASSWORD ____  -->
                             <div class="form-group">
                                 <label for="inpPwd1">Password</label>
@@ -112,7 +121,7 @@
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="divPwd2">
                             <!-- _____ REPEAT PWD ____  -->
                             <div class="form-group">
                                 <label for="inpPwd2">Repeteix Pwd</label>
@@ -122,7 +131,7 @@
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="divName">
                             <!-- _____ NOM ____  -->
                             <div class="form-group">
                                 <label for="inpName">Nom</label>
@@ -198,17 +207,20 @@
                                 <valid  id ="valProv" class="valid-feedback"></valid>                                                                                                
                             </form>
                         </div>
-                        <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
-                        <div class="col-md-12">
-                            <!-- _____ ACCEPTAR TERMES ____  -->
-                            <form class="form-group">
-                                <label for="inpTerm">Accepta termes de privacitat</label>
-                                <input id ="inpTerm" type="text" class="form-check-input">
-                                <error id ="errTerm" class="invalid-feedback"></error>
-                                <valid id ="valTerm" class="valid-feedback"></valid>                                                                                                
-                            </form>
-                        </div>
                         <!-- exemple de RadioButtons - nomes 1 opcio valida -->
+                        
+                        <!-- <div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked"
+                            required>
+                          <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                          <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked"
+                            required>
+                          <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+                          <div class="invalid-feedback">More example invalid feedback text</div>
+                        </div> -->
+
                         <div class="col-md-12">
                             <form class="form-group">                        
                                 <input id ="radLlenya" type="radio" name="llenya" value="llenya">
@@ -223,14 +235,24 @@
                                 <valid id ="valFeina" class="valid-feedback"></valid>    
                             </form>  
                         <div>
-                    </div>
+                        <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
+                        <div class="col-md-12">
+                          <!-- _____ ACCEPTAR TERMES ____  -->
+                          <form class="form-group">
+                              <label for="inpTerm">Accepta termes de privacitat</label>
+                              <input id ="inpTerm" type="text" class="form-check-input">
+                              <error id ="errTerm" class="invalid-feedback"></error>
+                              <valid id ="valTerm" class="valid-feedback"></valid>                                                                                                
+                          </form>
+                      </div>
+                    </fieldset>
 
                     </form>
                     <!-- end form ______________________________________________________________________ -->
                 </modalbody>
                 <modalfoot class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal" action="mailto:ortiz.ignasi@gmail.com" method="post" enctype="text/plain">Enviar</button>
-                    <input type="reset" class="btn btn-primary" value="Reset">
+                    <input type="reset" class="btn btn-primary" value="Reset" onclick="buidar()">
                 </modalfoot>
             </div>
         </div>
@@ -376,6 +398,7 @@
         <h2>CONTACTAR</h2>
         <div class="row">
           <!-- col-md-6 hace de las 12 partes de bootstrap, una col de 6 partes (el 50% del ancho) -->
+          <!-- para pantallas a partir de md hacia más grandes, es decir, las xs y sm toman las 12 -->
           <div class="col-md-6 topmargin-sm">
             <p>Envii un Whatsapp al telf 666.666.666, o bé ompli aquest formulari i li contactarem:</p>
           </div>
@@ -501,9 +524,11 @@
        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
        crossorigin="anonymous"></script>
 
-   <!-- arxiu CLI fisic descarregat  -->
-   <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- arxiu CLI fisic descarregat  -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 
+    <!-- el nostre JS de validació, que guardarem com a patró, ens servirà molt en un futur -->
+    <script src="scripts/validacio.js" type="text/javascript"></script>    
 
 </body>
 </html>
