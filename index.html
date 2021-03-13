@@ -77,7 +77,7 @@
             <div class="modal-content">
                 <modalhead class="modal-header">
                     <h4 class="modal-title">REGISTRE</h4>
-                    <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close btn-danger" data-dismiss="modal" onclick="buidar()">&times;</button>
                 </modalhead>
                 <modalbody class="modal-body">
                     <p>Omple les teves dades:</p>                  
@@ -97,12 +97,12 @@
 
                     <fieldset class="row">           
                         <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
-                        <div class="col-md-12" id="divUser">
+                        <div class="col-md-12 frmDivs" id="divUser">
                             <!-- _____ USER NAME ____  -->
                             <div class="form-group">
                                 <label for="inpUser">Usuari (nick name)</label>
                                 <!-- important posar un ID o NAME, pq el JS trobi el camp a validar  -->
-                                <input id="inpUser" type="text" class="form-control" placeholder="usuari" autofocus>
+                                <input id="inpUser" type="text" class="form-control focus" placeholder="usuari" autofocus>
                                 <!-- clases 'invalid-feedback' i 'valid-feedback' de Bootstrap 
                                      en aquesta ubicació posarà missatge Ok o Nok  -->
                                 <div id="errUser" class="invalid-feedback"></div>
@@ -111,7 +111,7 @@
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols 
                              osigui xs agafa 12, sm també (per defecte) a partir md agafa 6 cols -->
-                        <div class="col-md-6" id="divPwd1">
+                        <div class="col-md-6 frmDivs" id="divPwd1">
                             <!-- _____ PASSWORD ____  -->
                             <div class="form-group">
                                 <label for="inpPwd1">Password</label>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6" id="divPwd2">
+                        <div class="col-md-6 frmDivs" id="divPwd2">
                             <!-- _____ REPEAT PWD ____  -->
                             <div class="form-group">
                                 <label for="inpPwd2">Repeteix Pwd</label>
@@ -131,17 +131,17 @@
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6" id="divName">
+                        <div class="col-md-6 frmDivs" id="divName">
                             <!-- _____ NOM ____  -->
                             <div class="form-group">
                                 <label for="inpName">Nom</label>
-                                <input id ="inpName" type="text" class="form-control" placeholder="nom">
+                                <input id ="inpName" type="text" class="form-control" placeholder="nom" required>
                                 <error id ="errName" class="invalid-feedback"></error>
                                 <valid id ="valName" class="valid-feedback"></valid>                                
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6">     
+                        <div class="col-md-6 frmDivs">     
                             <!-- _____ COGNOMS ____  -->
                             <div class="form-group">
                                 <label for="inpSurn">Cognoms</label>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6">
+                        <div class="col-md-6 frmDivs">
                             <!-- _____ E-MAIL ____  -->
                             <form class="form-group">
                                 <label for="inpMail">E-mail</label>
@@ -161,7 +161,7 @@
                             </form>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                        
-                        <div class="col-md-6">
+                        <div class="col-md-6 frmDivs">
                             <!-- _____ TELEFON ____  -->
                             <form class="form-group">
                                 <label for="inpTelf">Telefon</label>
@@ -171,7 +171,7 @@
                             </form>
                         </div>                        
                         <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
-                        <div class="col-md-12">
+                        <div class="col-md-12 frmDivs">
                             <!-- _____ DIRECCIO ____  -->
                             <form class="form-group">
                                 <label for="inpDire">Direccio</label>
@@ -181,7 +181,7 @@
                             </form>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                         
-                        <div class="col-md-6">
+                        <div class="col-md-6 frmDivs">
                             <!-- _____ POBLACIO ____  -->
                             <form class="form-group">
                                 <label for="inpPobl">Poblacio</label>
@@ -191,7 +191,7 @@
                             </form>
                         </div>
                         <!-- bootstrap: a partir de tamany md, cap a més gran, ocuparà 6 cols -->                         
-                        <div class="col-md-6">
+                        <div class="col-md-6 frmDivs">
                             <!-- _____ PROVINCIA combo ____  -->
                             <form class="form-group">
                                 <label for="inpProv">Provincia</label>
@@ -208,7 +208,7 @@
                             </form>
                         </div>
                         <!-- exemple de RadioButtons - nomes 1 opcio valida -->
-                        
+
                         <!-- <div class="custom-control custom-radio">
                           <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked"
                             required>
@@ -221,7 +221,7 @@
                           <div class="invalid-feedback">More example invalid feedback text</div>
                         </div> -->
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 frmDivs">
                             <form class="form-group">                        
                                 <input id ="radLlenya" type="radio" name="llenya" value="llenya">
                                 <label for="radLlenya">llenya</label><br>
