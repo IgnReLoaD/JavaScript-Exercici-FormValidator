@@ -28,6 +28,7 @@ var email_error     = document.getElementById('errMail');
 var telefono_error  = document.getElementById('errTelf');
 var password_error  = document.getElementById('errPwd1');
 var passwor2_error  = document.getElementById('errPwd2');
+var province_error  = document.getElementById('errProv');
 var missatge_envio  = document.getElementById('msgForm');
 var btn_reset_form  = document.getElementById('btnRset');
 var btn_regis_form  = document.getElementById('btnRegi');
@@ -41,8 +42,8 @@ realname.addEventListener('focusout', realVerify);
 email.addEventListener('focusout', mailVerify);
 password.addEventListener('focusout', pwd1Verify);
 passwor2.addEventListener('focusout', pwd2Verify);
-telefono.addEventListener('change', telfVerify);
-
+telefono.addEventListener('focusout', telfVerify);
+province.addEventListener('focusout', provVerify);
 
 // -------- FOCUS AL PRIMER CAMP al iniciar la finestra -----------------------------
 // finestra_modal.onload = function(){
@@ -247,17 +248,17 @@ function telfVerify(){
   let boleano = false;
   // si esta en blanc
   if (inpTelf.value == "") {
-    Invalidar(inpTelf);
-    telf_error.textContent = "No es pot deixar en blanc.";
+    Invalidar(telefono);
+    telefono_error.textContent = "No es pot deixar en blanc.";
   } else if (!cumpleixTelf(inpTelf.value)) {
-    Invalidar(inpTelf);
-    telf_error.textContent = "No cumpleix format standard.";
+    Invalidar(telefono);
+    telefono_error.textContent = "No cumpleix format standard.";
   } else {
     telefono.style.border = "1px solid #5e6e66";
     document.getElementById('divTelf').style.color = "#0ec771";
-    telf_error.textContent = "";    
+    telefono_error.textContent = "";    
     boleano = true;
-    Validar(inpTelf);
+    Validar(telefono);
   }
   return boleano;
 }
@@ -275,10 +276,10 @@ function mailVerify(){
   let boleano = false;
   // si esta en blanc
   if (inpMail.value == "") {
-    Invalidar(inpMail);
+    Invalidar(email);
     email_error.textContent = "No es pot deixar en blanc.";
   } else if (!cumpleixEmail(inpMail.value)) {
-    Invalidar(inpMail);
+    Invalidar(email);
     email_error.textContent = "No cumpleix format standard.";
   } else {
     email.style.border = "1px solid #5e6e66";
@@ -295,6 +296,25 @@ function cumpleixEmail(email) {
 	var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	return regex.test(email) ? true : false;
 }
+
+// VERIFICAR el camp PROVINCIA (desplegable) - quan perd focus  
+
+function provVerify(){
+  let boleano = false;
+  // si esta en blanc
+  if (inpProv.value == "") {
+    Invalidar(province);
+    province_error.textContent = "No es pot deixar en blanc.";
+  } else {
+    province.style.border = "1px solid #5e6e66";
+    document.getElementById('divProv').style.color = "#0ec771";
+    province_error.textContent = "";    
+    boleano = true;
+    Validar(province);
+  }
+  return boleano;
+}
+
 
 username.focus();
 
