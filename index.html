@@ -227,29 +227,31 @@
                             </div> -->
 
                             <div class="col-md-12 frmDivs">
-                                <div class="form-group">                        
-                                    <input id ="radLlenya" type="radio" name="llenya" value="llenya">
+                                <div class="form-group"> 
+                                    <label>Feina a contractar:</label>  <br>                     
+                                    <input id ="radLlenya" type="radio" name="feina" value="llenya">
                                     <label for="radLlenya">llenya</label><br>
-                                    <input id ="radTal-la" type="radio" name="tal-la" value="tal-la">
+                                    <input id ="radTal-la" type="radio" name="feina" value="tal-la">
                                     <label for="radTal-la">tal-la</label><br>
-                                    <input id ="radBoscos" type="radio" name="boscos" value="boscos">
-                                    <label for="radBoscos">boscos</label>
-                                    <input id ="radPrivat" type="radio" name="privat" value="privat">
-                                    <label for="radPrivat">privat</label>
+                                    <input id ="radBoscos" type="radio" name="feina" value="boscos">
+                                    <label for="radBoscos">boscos</label><br>
+                                    <input id ="radPrivat" type="radio" name="feina" value="privat">
+                                    <label for="radPrivat">privat</label><br>                                    
                                     <error id ="errFeina" class="invalid-feedback"></error>
-                                    <valid id ="valFeina" class="valid-feedback"></valid>    
+                                    <valid id ="valFeina" class="valid-feedback"></valid>                                     
                                 </div>  
                             <div>
+                            <hr>
                             <!-- bootstrap: a partir tamany md ocupa 12 cols (no cal, per defecte ja ho fa) -->
-                            <div class="col-md-12">
-                              <!-- _____ ACCEPTAR TERMES ____  -->
-                              <div class="form-group">
-                                  <label for="inpTerm">Accepta termes de privacitat</label>
-                                  <input id ="inpTerm" type="text" class="form-check-input">
-                                  <error id ="errTerm" class="invalid-feedback"></error>
-                                  <valid id ="valTerm" class="valid-feedback"></valid>                                                                                                
-                              </div>
-                          </div>
+                            <div class="col-md-12" id="divTerm">
+                                <!-- _____ ACCEPTAR TERMES ____  -->
+                                <div class="form-group">
+                                    <!-- <label for="inpTerm">Accepta termes</label> -->
+                                    <input id ="inpTerm" type="checkbox" class="form-check-input" required>Acceptar termes.
+                                    <error id ="errTerm" class="invalid-feedback"></error>
+                                    <valid id ="valTerm" class="valid-feedback"></valid>                                                                                                
+                                </div>
+                            </div>
                         </fieldset>
                         <input type="submit" class="btn btn-success" id="btnRegi" name="Registrar" value="Registrar">
                         <input type="reset" class="btn btn-primary" id="btnRset" value="Reset" onclick="buidar()">

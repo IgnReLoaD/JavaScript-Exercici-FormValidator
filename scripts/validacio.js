@@ -29,6 +29,7 @@ var telefono_error  = document.getElementById('errTelf');
 var password_error  = document.getElementById('errPwd1');
 var passwor2_error  = document.getElementById('errPwd2');
 var province_error  = document.getElementById('errProv');
+var terminos_error  = document.getElementById('errTerm');
 var missatge_envio  = document.getElementById('msgForm');
 var btn_reset_form  = document.getElementById('btnRset');
 var btn_regis_form  = document.getElementById('btnRegi');
@@ -44,6 +45,7 @@ password.addEventListener('focusout', pwd1Verify);
 passwor2.addEventListener('focusout', pwd2Verify);
 telefono.addEventListener('focusout', telfVerify);
 province.addEventListener('focusout', provVerify);
+terminos.addEventListener('focusout', termVerify);
 
 // -------- FOCUS AL PRIMER CAMP al iniciar la finestra -----------------------------
 // finestra_modal.onload = function(){
@@ -302,7 +304,7 @@ function cumpleixEmail(email) {
 function provVerify(){
   let boleano = false;
   // si esta en blanc
-  if (inpProv.value == "") {
+  if (province.value == "") {
     Invalidar(province);
     province_error.textContent = "No es pot deixar en blanc.";
   } else {
@@ -315,7 +317,23 @@ function provVerify(){
   return boleano;
 }
 
+// VERIFICAR el camp ACEPTAR TERMES (checkbox) ------------------------------------
 
+function termVerify(){
+  let boleano = false;
+  if (!terminos.checked) {
+    Invalidar(terminos);
+    document.getElementById('divTerm').style.color = "red";
+    terminos_error.textContent = "Marqui per continuar.";
+  } else {
+    Validar(terminos);
+    document.getElementById('divTerm').style.color = "#0ec771";
+    boleano = true;
+  }
+  return boleano;
+}
+
+//--------------------------------------------------------------------------------------
 username.focus();
 
 // ============ FUNCIO PRINCIPAL (main) - quan pulsa ENVIAR ho repassa tot =============
@@ -324,7 +342,16 @@ function validate() {
   const form = document.getElementById('frmReg');
   form.classList.remove("is-invalid");
 
-  // if ( userVerify() && pwd1Verify() && pw2Verify() && realVerify() && mailVerify() && telfVerify() ) {
+  // Preparat per si vol fer comprobació de camps 1 sol cop, al botó REGISTRAR (var boleano)
+  // però llavors feia falta un TIMER perquè es veiés el misatge OK abans de tancar-se :( ...
+  // if ( userVerify() 
+  // && pwd1Verify() 
+  //       && pw2Verify() 
+  //             && realVerify() 
+  //                   && mailVerify() 
+  //                         && telfVerify() 
+  //                               && provVerify()
+  //                                   && termVerify()  ) {
   if ( userVerify() ) {
     validador = true;
     msgForm.innerHTML = "Enviat correctament.";

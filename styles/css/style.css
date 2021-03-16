@@ -27,6 +27,57 @@ h2 {
     margin-bottom: 30px;
 }
 
+/* .borde{
+    border: 1px solid black;
+    padding: 0;
+} */
+
+#inpUser  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpPwd1  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpPwd2  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpName  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpSurn  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpMail  {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpTelf  {
+    border: 1px solid black;
+    padding: 0;
+}
+#inpDire {
+    border: 1px solid black;
+    padding: 0;
+}
+#inpPobl {
+    border: 1px solid black;
+    padding: 0;
+} 
+#inpProv {
+    border: 1px solid black;
+    padding: 0;
+}
+
+/* #divProv > select {
+    color: black;    
+    border: 1px solid black;
+}  */
+
 #titol {
     color: goldenrod;
     padding-right: 20px;
