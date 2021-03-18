@@ -5,17 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author"      content="Ignasi Ortiz">
-    <meta name="keywords"    content="form validator bootstrap">
+    <meta name="keywords"    content="form validator bootstrap i jquery">
     <meta name="description" content="IT Academy - modul 7 JS FormValidator"> 
 
     <!-- Bootstrap ... amb CDN (enllaços) ------------------------------------------  -->
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
               rel="stylesheet" 
               integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
-              crossorigin="anonymous"> -->
+              crossorigin="anonymous">
     
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
 
     <!-- Bootstrap ... amb CLI (fitxers)  ------------------------------------------- -->
     <!-- <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">      -->
@@ -37,48 +37,62 @@
     <title>Form Validator exercise</title>
 </head>
 
+<!-- !!!!! ATENCIO MOLT IMPORTANT: el NAV BAR Bootstrapp no alinearà bé si enllaços CDN no estàn com a dalt !!!! -->
 <body>
-    <!-- NAV BAR de Bootstrap -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+    <!-- NAV BAR de Bootstrap ============ EXEMPLE MOLT IMPORTANT ===================================== -->
     <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
+      <!-- per estudiar posar-li classe 'resaltado' (pinta un borde rosa per definir els Divs) -->
+      <div class="container">
 
-        <!-- 1. Logotip -->
-        <a class="navbar-brand col-xs-2" href="#"><img src="assets/logo.png" class="logo-brand" alt="logo"></a>
+          <!-- logo + titol en un DIV a l'ESQUERRA (per estudiar, posar-li classe 'resaltadorojo') -->
+          <div id="navEsquerra" class="col-xs-6 col-lg-4 justify-content-start">
+              <!-- 1. Logotip -->
+              <a id="logot" class="navbar-brand col-xs-2" href="#"><img src="assets/logo.png" class="logo-brand" alt="logo"></a>
+              <!-- 2. Nom corporatiu -->
+              <a id="titol" class="col-xs-4">TOT HO TALLO</a>
+          </div>
 
-        <!-- 2. Nom corporatiu -->
-        <a id="titol" class="col-xs-6">TOT HO TALLO</a>
+          <!-- iconaUsuari + burguerMenu en un DIV a la DRETA (per estudiar, posar-li classe 'resaltadorojo') -->
+          <div id="navDreta" class="col-xs-6 col-lg-4 d-flex justify-content-end align-self-center"> 
 
-        <!-- 3. Icona usuari Registrar -->
-        <div class="col-xs-2">
-          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-          <!-- <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation"> -->
-          <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#miModal">
-            <ion-icon name="person-circle-outline"></ion-icon>            
-          </button>
-        </div>               
+              <!-- 3. Dropdown boto-combo USUARI que pot desplegar persiana d'opcions Login i Registre -->
+              <button type="button" class="col-xs-1 dropdown btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                <ion-icon id="icoUser" name="person-circle-outline"></ion-icon>            
+              </button>
+              <!-- 3.1. ocult: persiana desplegable USUARI amb les 2 sub-opcions  -->
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" data-toggle="modal" data-target="#regModal">registre</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#logModal">login</a>
+              </div>                
+              <!-- fi de punt 3, part de persiana dropdown USUARI --> 
 
-        <!-- 4. Burguer Menu desplegable -->
-        <button class="navbar-toggler col-xs-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <ion-icon name="menu-outline"></ion-icon>          
-        </button>
-      
-        <!-- 4.1. ocult: Menu desplegable del Burguer, que està colapsat (amagat per defecte) -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- 4. Botó del Burguer Menu -->
+              <button class="col-xs-1 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <ion-icon id="icoMenu" name="menu-outline"></ion-icon>          
+              </button>
 
-          <!-- alinear a la dreta ML-AUTO (posa a margin left respecte els divs anteriors) per defecte a la docum Bootstrap esta: mr-auto -->
-          <ul class="navbar-nav ml-auto">                      
-            <li class="nav-item">          <a class="nav-link" href="#"         >Inici</a>    </li>
-            <li class="nav-item">          <a class="nav-link" href="#bones"    >Qui som?</a> </li>
-            <li class="nav-item dropdown"> <a class="nav-link" href="#serveis"  >Serveis</a>  </li>
-            <li class="nav-item">          <a class="nav-link" href="#contactar">Contactar</a></li>
-          </ul>
-        </div>        
+          </div>
+          <!-- fi del navDreta -->
+
+          <!-- 4.1. ocult: persiana desplegable Burguer (amagat per defecte) Important: aquí fora del DIV Dreta -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- alinear a la dreta ML-AUTO (posa a margin left respecte els divs anteriors) per defecte a la docum Bootstrap esta: mr-auto --> 
+              <ul class="navbar-nav ml-auto">                      
+                  <li class="nav-item">          <a class="nav-link" href="#"         >Inici</a>    </li>
+                  <li class="nav-item">          <a class="nav-link" href="#bones"    >Nosaltres</a> </li>
+                  <li class="nav-item dropdown"> <a class="nav-link" href="#serveis"  >Serveis</a>  </li>
+                  <li class="nav-item">          <a class="nav-link" href="#contactar">Contactar</a></li>
+              </ul>
+          </div>  
+          <!-- fi de punt 4, part de menú que s'oculta BURGUER -->
       </div>
     </nav>
+    <!-- Fi de NAV BAR de Bootstrap ============ EXEMPLE MOLT IMPORTANT ================================== -->
 
-    <!-- 3.1. ocult:  finestra Modal REGISTRE (va fora etiq.header pq alla tenim un fixed-top) -->
-    <modal class="modal fade" id="miModal" onload="focusPrimerCamp()">
+    <!-- Inici Finestres MODALS de Bootstrap === EXEMPLE MOLT IMPORTANT ================================== -->
+
+    <!-- 3.1.1 ocult:  finestra Modal REGISTRE (van fora etiqueta NAV pq alla hi tenim un fixed-top) -->
+    <modal class="modal fade" id="regModal" onload="focusPrimerCamp()">
         <div class="modal-dialog">
             <div class="modal-content">
                 <modalhead class="modal-header">
@@ -264,6 +278,43 @@
             </div>
         </div>
     </modal>
+    <!-- fi del 3.1.1. finestra Modal REGISTRE  -->
+    
+    <!-- 3.1.2 ocult:  finestra Modal LOGIN (van fora etiqueta NAV pq alla hi tenim un fixed-top) -->
+    <modal class="modal fade" id="logModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <modalhead class="modal-header">
+                    <h4 class="modal-title">LOGIN</h4>
+                    <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
+                </modalhead>
+                <modalbody class="modal-body">
+                    <p>Entra les teves credencials:</p>                  
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inpLogin" class="text-dark">Usuari:</label>
+                                <input id ="inpLogin" type="text" class="form-control" placeholder="nickname">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inpPswd" class="text-dark">Contrasenya:</label>
+                                <input id ="inpPswd" type="password" class="form-control" placeholder="password">
+                            </div>
+                        </div>                  
+                    </div>
+                </modalbody>
+                <modalfoot class="modal-footer">
+                    <input type="submit" class="btn btn-success" data-dismiss="modal" value="   Log in   ">
+                    <input type="button" class="btn btn-primary" value="Recordar">
+                </modalfoot>
+            </div>
+        </div>
+    </modal>
+    <!-- fi del 3.1.1. finestra Modal REGISTRE  -->
+
+    <!-- Fi de Finestres MODALS de Bootstrap === EXEMPLE MOLT IMPORTANT ================================== -->
     
 
     <section id="presenta">
@@ -504,6 +555,38 @@
       <p>Bcn Activa &#169; 2021 all rights reserved </p>   
       <!-- el simbol del Copyright es pot fer amb &#169; o amb  &copy;   -->
     </footer>
+
+
+<!-- ****** exemple per provar finestra modal de cookies ******* -->
+
+  <!--Modal cookies-->
+  <div class="cookies d-none">
+    <div class="container">
+      <div class="modal fade" id="cookiesModal" tabindex="-1" role="dialog" aria-labelledby="cookiesModal"
+        aria-hidden="true">
+        <div class="modal-dialog mr-0 ml-sm-5" role="document">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-body">
+              <div class="notice d-flex justify-content-between align-items-center">
+                <div class="cookie-text">
+                  This website uses cookies to personalize content and analyse traffic in order to offer you a better
+                  experience.
+                </div>
+                <div class="buttons d-flex flex-column flex-lg-row">
+                  <a href="#a" class="btn btn-success btn-sm" data-dismiss="modal">I accept</a>
+                  <a href="https://gdpr.eu/cookies/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm ml-1" data-dismiss="modal">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--Fin modal cookies-->
+
 
 
     <!-- enllaços CDN (online):  jQuery, popper, bootstrap-->

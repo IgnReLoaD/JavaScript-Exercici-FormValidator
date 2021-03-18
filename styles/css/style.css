@@ -1,3 +1,13 @@
+/* -- classes per estudiar Bootstrap (posicions de containers i divs) -- */
+.resaltado {
+    border: 1px solid pink;
+}
+
+.resaltadorojo {
+    border: 1px solid red;
+}
+/* --------------------------------------------------------------------- */
+
 body {
     font-family: 'Titillium Web', sans-serif;
 }
@@ -26,11 +36,6 @@ h2 {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-
-/* .borde{
-    border: 1px solid black;
-    padding: 0;
-} */
 
 #inpUser  {
     border: 1px solid black;
@@ -105,11 +110,11 @@ section {
     box-shadow: 0 2px 4px 0 rgba(0,0,0, .05);
 }
 
+/* ----- per als botons Login i Registre, i BurguerMenu -------  */
 .navbar-toggler { 
     font-size: 50px;
-    padding: 0;    
+    padding: 0px;    
 }
-/* .navbar-toggler:focus {  } */
 
 .navbar-toggler:focus { 
     cursor: pointer; 
@@ -117,6 +122,44 @@ section {
     /* outline: none; */
     box-shadow: none; 
 }
+
+.dropdown-toggler:focus {
+    border-style: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer; 
+}
+
+#navDreta > div > a:nth-child(1){
+    cursor: pointer; 
+}
+
+#navDreta > div > a:nth-child(2){
+    cursor: pointer; 
+}
+
+.dropdown-toggle::after{
+    content: none;
+    cursor: pointer; 
+}
+
+.btn-check:focus+.btn, .btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+#icoUser{
+    font-size: 30px;
+}
+#navDreta > button.col-xs-1.dropdown.btn.dropdown-toggle.dropdown-toggle-split{
+    padding-bottom: 0px;
+    padding-top: 12px;
+}
+
+#icoMenu{
+    font-size: 30px;
+}
+/* ----- fi de botons Login i Registre -------  */
 
 .nav-link {
     color: black;
