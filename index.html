@@ -19,7 +19,7 @@
 
     <!-- Bootstrap ... amb CLI (fitxers)  ------------------------------------------- -->
     <!-- <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">      -->
-    <!-- <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.min.css">  -->
+    <!-- <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.min.css">  -->  
 
     <!-- Google Fonts   -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,7 +57,7 @@
 
               <!-- 3. Dropdown boto-combo USUARI que pot desplegar persiana d'opcions Login i Registre -->
               <button type="button" class="col-xs-1 dropdown btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-                <ion-icon id="icoUser" name="person-circle-outline"></ion-icon>            
+                <ion-icon id="icoUser" name="person-circle-outline" alt="usuari"></ion-icon>            
               </button>
               <!-- 3.1. ocult: persiana desplegable USUARI amb les 2 sub-opcions  -->
               <div class="dropdown-menu">
@@ -289,25 +289,31 @@
                     <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
                 </modalhead>
                 <modalbody class="modal-body">
-                    <p>Entra les teves credencials:</p>                  
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inpLogin" class="text-dark">Usuari:</label>
-                                <input id ="inpLogin" type="text" class="form-control" placeholder="nickname">
+                    <p>Entra les teves credencials:</p> 
+                    
+                    <form class="needs-validation pb-5" method="POST" action="" id="frmLog" name="frmLog"> 
+                                <!-- </form>  onsubmit="return validateJQ()"> -->
+                        <fieldset class="row">                                               
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inpLog" class="text-dark">Usuari: </label>
+                                    <input id ="inpLog" name="inpLog" type="text" class="form-control" placeholder="nickname">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inpPswd" class="text-dark">Contrasenya:</label>
-                                <input id ="inpPswd" type="password" class="form-control" placeholder="password">
-                            </div>
-                        </div>                  
-                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inpPwd" class="text-dark">Contrasenya: </label>
+                                    <input id ="inpPwd" name="inpPwd" type="password" class="form-control" placeholder="password">
+                                </div>
+                            </div>                                          
+                        </fieldset>
+                        <p></p>
+                        <input type="submit" class="submit btn btn-success" data-dismiss="modal" value="   Log in   ">
+                        <input type="button" class="btn btn-primary" value="Recordar">
+                    </form>
                 </modalbody>
                 <modalfoot class="modal-footer">
-                    <input type="submit" class="btn btn-success" data-dismiss="modal" value="   Log in   ">
-                    <input type="button" class="btn btn-primary" value="Recordar">
+                    <p>La pwd té mínim 1 majús, 1 minús, 1 núm, 1 símbol. </p>
                 </modalfoot>
             </div>
         </div>
@@ -622,7 +628,16 @@
     <!-- arxiu CLI fisic descarregat  -->
     <!-- <script src="js/bootstrap.min.js"></script> -->
 
-    <!-- el nostre JS de validació, que guardarem com a patró, ens servirà molt en un futur -->
+    <!-- JQuery per a Validator  -->
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+     <!-- el nostre JS de validació del formulari de User, que ens servirà en futur  -->
+    <script src="scripts/validacioJQuery.js" type="text/javascript"></script>    
+
+    <!-- el nostre JS de validació (sense JQuery), que ens servirà molt en un futur -->
     <script src="scripts/validacio.js" type="text/javascript"></script>    
 
 </body>

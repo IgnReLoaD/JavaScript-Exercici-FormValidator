@@ -83,6 +83,39 @@ h2 {
     border: 1px solid black;
 }  */
 
+/* ------- per a la validacio amb JQuery ---------------  */
+
+#frmLog label {
+    margin-top: 15px;
+}
+
+#frmLog input {
+    border-style: solid;
+    border-color: lightslategray;
+    margin-bottom: 10px;
+}
+
+#frmLog label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+#frmLog input.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+#frmLog input:focus {
+    border: 2px solid black;
+    outline: none;
+    box-shadow: none;
+}
+
+/* ------- FI a la validacio amb JQuery ---------------  */
+
 #titol {
     color: goldenrod;
     padding-right: 20px;
